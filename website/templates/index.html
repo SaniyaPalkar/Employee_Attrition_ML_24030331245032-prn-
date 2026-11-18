@@ -1,0 +1,399 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Attrition Prediction System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <h2>Employee<span>AI</span></h2>
+
+        <p class="menu-title">MAIN MENU</p>
+
+        <a href="#dashboard" class="active">Dashboard</a>
+        <a href="#prediction">Attrition Prediction</a>
+        <a href="#comparison">Model Comparison</a>
+        <a href="#clusters">Cluster Analysis</a>
+
+        <div class="sidebar-footer">
+            Machine Learning Project<br>
+            Employee Analytics
+        </div>
+    </div>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <h1>Employee Attrition Dashboard</h1>
+                <p>Understand employee attrition using Machine Learning</p>
+            </div>
+
+            <div class="status">
+                <span class="status-dot"></span>
+                System Active
+            </div>
+        </header>
+
+        <section id="dashboard">
+
+            <div class="welcome">
+                <h2>Welcome to EmployeeAI</h2>
+                <p>
+                    Analyze employee information, predict possible
+                    attrition and explore employee groups.
+                </p>
+            </div>
+
+            <h2 class="section-heading">Project Overview</h2>
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <p>Total Employees</p>
+                    <h2>1,470</h2>
+                    <span>Dataset records</span>
+                </div>
+
+                <div class="stat-card">
+                    <p>Machine Learning Models</p>
+                    <h2>3</h2>
+                    <span>ANN, SVM and K-Means</span>
+                </div>
+
+                <div class="stat-card">
+                    <p>Best Accuracy</p>
+                    <h2>86.73%</h2>
+                    <span>SVM classification model</span>
+                </div>
+
+                <div class="stat-card">
+                    <p>Employee Groups</p>
+                    <h2>3</h2>
+                    <span>K-Means clustering</span>
+                </div>
+
+            </div>
+
+        </section>
+
+        
+<section id="prediction">
+    <h2 class="section-heading">Employee Attrition Prediction</h2>
+
+    <div class="feature-card">
+        <h3>Employee Information</h3>
+        <p>Enter all 30 employee details to generate a prediction.</p>
+
+        <form id="predictionForm">
+
+            <h3 class="form-heading">Personal Information</h3>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Age</label>
+                    <input type="number" name="Age" min="18" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Gender</label>
+                    <select name="Gender" required>
+                        <option value="">Select Gender</option>
+                        <option>Female</option>
+                        <option>Male</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Marital Status</label>
+                    <select name="MaritalStatus" required>
+                        <option value="">Select Status</option>
+                        <option>Divorced</option>
+                        <option>Married</option>
+                        <option>Single</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Distance From Home</label>
+                    <input type="number" name="DistanceFromHome" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Education (1-5)</label>
+                    <input type="number" name="Education" min="1" max="5" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Education Field</label>
+                    <select name="EducationField" required>
+                        <option value="">Select Field</option>
+                        <option>Human Resources</option>
+                        <option>Life Sciences</option>
+                        <option>Marketing</option>
+                        <option>Medical</option>
+                        <option>Other</option>
+                        <option>Technical Degree</option>
+                    </select>
+                </div>
+            </div>
+
+            <h3 class="form-heading">Job Information</h3>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Department</label>
+                    <select name="Department" required>
+                        <option value="">Select Department</option>
+                        <option>Human Resources</option>
+                        <option>Research & Development</option>
+                        <option>Sales</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Job Role</label>
+                    <select name="JobRole" required>
+                        <option value="">Select Job Role</option>
+                        <option>Healthcare Representative</option>
+                        <option>Human Resources</option>
+                        <option>Laboratory Technician</option>
+                        <option>Manager</option>
+                        <option>Manufacturing Director</option>
+                        <option>Research Director</option>
+                        <option>Research Scientist</option>
+                        <option>Sales Executive</option>
+                        <option>Sales Representative</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Job Level (1-5)</label>
+                    <input type="number" name="JobLevel" min="1" max="5" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Business Travel</label>
+                    <select name="BusinessTravel" required>
+                        <option value="">Select Travel</option>
+                        <option>Non-Travel</option>
+                        <option>Travel_Frequently</option>
+                        <option>Travel_Rarely</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Daily Rate</label>
+                    <input type="number" name="DailyRate" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Hourly Rate</label>
+                    <input type="number" name="HourlyRate" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Monthly Income</label>
+                    <input type="number" name="MonthlyIncome" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Monthly Rate</label>
+                    <input type="number" name="MonthlyRate" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Overtime</label>
+                    <select name="OverTime" required>
+                        <option value="">Select Overtime</option>
+                        <option>No</option>
+                        <option>Yes</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Percent Salary Hike</label>
+                    <input type="number" name="PercentSalaryHike" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Performance Rating (1-4)</label>
+                    <input type="number" name="PerformanceRating" min="1" max="4" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Number of Companies Worked</label>
+                    <input type="number" name="NumCompaniesWorked" min="0" required>
+                </div>
+            </div>
+
+            <h3 class="form-heading">Employee Satisfaction</h3>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Environment Satisfaction (1-4)</label>
+                    <input type="number" name="EnvironmentSatisfaction" min="1" max="4" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Job Involvement (1-4)</label>
+                    <input type="number" name="JobInvolvement" min="1" max="4" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Job Satisfaction (1-4)</label>
+                    <input type="number" name="JobSatisfaction" min="1" max="4" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Relationship Satisfaction (1-4)</label>
+                    <input type="number" name="RelationshipSatisfaction" min="1" max="4" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Work Life Balance (1-4)</label>
+                    <input type="number" name="WorkLifeBalance" min="1" max="4" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Stock Option Level (0-3)</label>
+                    <input type="number" name="StockOptionLevel" min="0" max="3" required>
+                </div>
+            </div>
+
+            <h3 class="form-heading">Work Experience</h3>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Total Working Years</label>
+                    <input type="number" name="TotalWorkingYears" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Years At Company</label>
+                    <input type="number" name="YearsAtCompany" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Years In Current Role</label>
+                    <input type="number" name="YearsInCurrentRole" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Years Since Last Promotion</label>
+                    <input type="number" name="YearsSinceLastPromotion" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Years With Current Manager</label>
+                    <input type="number" name="YearsWithCurrManager" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Training Times Last Year</label>
+                    <input type="number" name="TrainingTimesLastYear" min="0" required>
+                </div>
+            </div>
+
+            <h3 class="form-heading">Select Prediction Model</h3>
+
+            <div class="form-group model-select">
+                <label>Machine Learning Algorithm</label>
+                <select name="model" required>
+                    <option value="ANN">Artificial Neural Network (ANN)</option>
+                    <option value="SVM">Support Vector Machine (SVM)</option>
+                </select>
+            </div>
+
+            <button type="submit" class="predict-btn">
+                Predict Employee Attrition
+            </button>
+
+        </form>
+
+        <div id="predictionResult" class="result-box" hidden>
+    <h3>Prediction Result</h3>
+    <div id="predictionDetails"></div>
+    <div id="hrRecommendations" class="hr-recommendations"></div>
+</div>
+
+    </div>
+</section>
+
+
+       
+<section id="comparison">
+    <h2 class="section-heading">Model Performance Comparison</h2>
+
+    <div class="feature-card">
+        <h3>ANN vs SVM</h3>
+        <p>Compare the performance of both classification algorithms.</p>
+
+        <div id="comparisonMessage">Loading model results...</div>
+
+        <div id="comparisonResults"></div>
+    </div>
+</section>
+
+
+        
+<section id="clusters">
+    <h2 class="section-heading">K-Means Cluster Analysis</h2>
+
+    <div class="feature-card">
+        <h3>Three Employee Groups</h3>
+        <p>
+            K-Means clustering groups employees based on similarities
+            in their age, income, job satisfaction and work experience.
+        </p>
+
+        <div id="clusterMessage">Loading cluster analysis...</div>
+        <div id="clusterResults"></div>
+        <div id="clusterCharts" class="cluster-charts">
+    <h3>Visual Cluster Comparison</h3>
+
+    <div class="chart-card">
+        <h4>Attrition Rate by Cluster</h4>
+        <div id="attritionChart"></div>
+    </div>
+
+    <div class="chart-card">
+        <h4>Average Monthly Income</h4>
+        <div id="incomeChart"></div>
+    </div>
+
+    <div class="chart-card">
+        <h4>Overtime Distribution</h4>
+        <div id="overtimeChart"></div>
+    </div>
+</div>
+    </div>
+
+    <div class="feature-card cluster-note">
+        <h3>Understanding the Results</h3>
+        <p>
+            These groups describe patterns in the dataset. They do not
+            prove why an employee leaves. The clusters have some overlap,
+            so their results should be interpreted carefully.
+        </p>
+    </div>
+</section>
+
+        <footer>
+            Employee Attrition Prediction System |
+            Academic Machine Learning Project
+        </footer>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
